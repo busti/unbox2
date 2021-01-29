@@ -1,0 +1,1 @@
+rm -f /mnt/c/Users/mbust/Desktop/*linux.iso && rm -rf result && nix-build -v '<nixpkgs/nixos>' -A config.system.build.isoImage -I nixos-config=iso.nix && chmod 777 result/iso/*.iso && mv result/iso/*linux.iso /mnt/c/Users/mbust/Desktop/
