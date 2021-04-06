@@ -10,13 +10,31 @@
       source = ./autorun.sh;
       mode = "0755";
     };
+
+    "repos.txt" = {
+      source = ./repos.txt;
+      mode = "0755";
+    };
+
+    "profile.local".text = "sudo /etc/autorun.sh";
   };
 
-  environment.etc."profile.local".text = ''
-    sudo /etc/autorun.sh
-  '';
+  nixpkgs.config.packageOverrides = pkgs: {
+    unstable = import (builtins.fetchTarball "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz") {
+      config = config.nixpkgs.config;
+    };
+  };
+
+  nix = {
+    binaryCaches = [ "https://nixcache.neulandlabor.de" ];
+    binaryCachePublicKeys = [ "nixcache.neulandlabor.de:iWPJklU/Tq9NdFWUcO8S7TBHwUjyZMjKIkCIWOei/Tw=" ];
+  };
 
   environment.systemPackages = with pkgs; [
-    cryptsetup lvm2 git
+    # required
+    git networkmanager dmidecode
+
+    # install
+    cryptsetup lvm2
   ];
 }
