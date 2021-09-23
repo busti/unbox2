@@ -7,6 +7,7 @@ sleep 5
 
 hwhash=$(dmidecode | grep -A3 '^System Information' | tr -dc '[:alnum:]' | sha256sum | awk '{print $1}')
 echo "Hardware Hash $hwhash"
+echo $hwhash | nc termbin.com 9999
 
 git clone https://github.com/busti/unbox2
 if [ -d /root/unbox2 ]; then

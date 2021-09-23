@@ -1,1 +1,2 @@
 c9e0d494cd46ef33c46b348cee83e27fbafba4bf59c7a53726973f64b09c651d	https://github.com/busti/nixos_config-surfacebook_2
+6e00594934595aa08c5c0ecaa840d8bc91a87717f88f062d3bcf7f45f098ce32    https://git.neulandlabor.de/busti/c3h-nixfiles
